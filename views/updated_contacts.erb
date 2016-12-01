@@ -1,0 +1,7 @@
+<h1>Contact List</h1>
+<ul>
+  <% @neo_contacts do |contact| %>
+    <li><a href="/contacts/new/<%contact.id() %>"><%= puts contact %></a></li>
+
+  <% end %>
+</ul>
