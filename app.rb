@@ -10,25 +10,8 @@ get('/') do
   erb(:index)
 end
 
-get('/mailing/new') do
-  erb(:mailing_form)
-end
-
-get('/phone/new') do
-  erb(:phone_form)
-end
-
-get('/email/new') do
-  erb(:email_form)
-end
-
 get('/contacts/new') do
   erb(:contacts_form)
-end
-
-get('/contacts') do
-  @contact_list = Contacts.all()
-  erb(:updated_contacts)
 end
 
 post('/contacts') do
@@ -40,7 +23,62 @@ post('/contacts') do
   erb(:success)
 end
 
+get('/contacts') do
+  @contact_list = Contacts.all()
+  erb(:updated_contacts)
+end
+
 get('/contacts/:id') do
   @single_contact = Contacts.find(params.fetch('id').to_i())
   erb(:contact)
+end
+
+get('/mailing/:id/new') do
+  @single_contact = Contacts.find(params.fetch('id').to_i())
+  erb(:mailing_form)
+end
+
+post('/mailing') do
+  # @single_contact = Contacts.find(params.fetch('id').to_i())
+  street = params.fetch('street')
+  city = params.fetch('city')
+  state = params.fetch('state')
+  zip = params.fetch('zip')
+  new_mailing = Mailing.new(:street => street, :city => city, :state => state, :zip => zip)
+  new_mailing.save()
+  @single_contact.add_address(new_mailing)
+  erb(:success)
+end
+
+get('/phone/:id/new') do
+  @single_contact = Contacts.find(params.fetch('id').to_i())
+  erb(:phone_form)
+end
+
+post('/numbers') do
+  # @single_contact = Contacts.find(params.fetch('id').to_i())
+  digits = params.fetch('phone')
+  new_number = Phone.new(:number => digits)
+  new_number.save()
+  @single_contact.add_number(new_number)
+  erb(:success)
+end
+
+get('/email/:id/new') do
+  @single_contact = Contacts.find(params.fetch('id').to_i())
+  erb(:email_form)
+end
+
+post('/email') do
+  # @single_contact = Contacts.find(params.fetch('id').to_i())
+  gmail = params.fetch('email')
+  new_email = Email.new(:mail => gmail)
+  new_email.save()
+  @single_contact.add_email(new_email)
+  erb(:success)
+end
+
+get('/clear') do
+  Contacts.clear()
+  erb(:index)
 end

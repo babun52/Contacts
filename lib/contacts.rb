@@ -8,6 +8,21 @@ class Contacts
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
     @id = @@contact_list.length() + 1
+    @add_number = []
+    @add_address = []
+    @add_email = []
+  end
+
+  def add_address(address)
+    @addresses.push(address)
+  end
+
+  def add_number(number)
+    @phone_numbers.push(number)
+  end
+
+  def add_email(email)
+    @email_addresses.push(email)
   end
 
   define_singleton_method(:all) do
