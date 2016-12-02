@@ -1,6 +1,10 @@
-<h1><%=@neo_contacts.first_name()%></h1>
-<h1><%=@neo_contacts.last_name()%></h1>
-<h1><%=@neo_contacts.job_title()%></h1>
-<h1><%=@neo_contacts.company()%></h1>
+<h1>First Name: <%=@single_contact.first_name()%></h1>
+<h1>Last Name: <%=@single_contact.last_name()%></h1>
+<h1>Occupation: <%=@single_contact.job_title()%></h1>
+<h1>Employer: <%=@single_contact.company()%></h1>
 
+
+<a href="/mailing/new">Add Mailing Address</a><br><br>
+<a href="/phone/new">Add Phone Number</a><br><br>
+<a href="/email/new">Add Email Address</a><br><br>
 <a href="/">Home</a>

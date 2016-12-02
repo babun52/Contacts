@@ -1,7 +1,9 @@
 <h1>Contact List</h1>
-<ul>
-  <% @neo_contacts do |contact| %>
-    <li><a href="/contacts/new/<%contact.id() %>"><%= puts contact %></a></li>
 
+<ul>
+  <% @contact_list.each() do |contact| %>
+    <li><a href="/contacts/<%=contact.id() %>"><%= contact.first_name() %></a></li>
   <% end %>
 </ul>
+
+<a href="/">Home</a>

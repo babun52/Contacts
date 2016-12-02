@@ -1,0 +1,28 @@
+<h1>Add a Mailing Address:</h1>
+
+<form action="/mailing" method="post">
+  <div class="control-group">
+    <label for="home_office">Address Type:</label>
+      <select class="form-control" id="home_office">
+        <option>Home</option>
+        <option>Office</option>
+      </select>
+  </div>
+  <div class="control-group">
+    <label for="street">Street Address: </label>
+    <input id="street" name="street" type="text">
+  </div>
+  <div class="control-group">
+    <label for="city">City: </label>
+    <input id="city" name="city" type="text">
+  </div>
+  <div class="control-group">
+    <label for="state">State: </label>
+    <input id="state" name="state" type="text">
+  </div>
+  <div class="control-group">
+    <label for="zip">Zip Code: </label>
+    <input id="zip" name="zip" type="number">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
